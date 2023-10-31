@@ -1,4 +1,4 @@
-# DinDino_Project
+# Dino_Project
 Coding the dino game for a project in C
 
 To run the dino game:
