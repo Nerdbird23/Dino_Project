@@ -4,12 +4,31 @@
 * Purpose:   Group Progect
 * Version:   1.0, October 13, 2023 
 * Resources: My tutor Adam and my unlce Jer Bear
+C Program (80%)
+
+Your finished project should demonstrate the following concepts we learned in class:
+
+thoughtful selection of variable names x
+easy to read and well documented code  x
+arrays                                 0
+robust error checking                  x
+if statements                          x
+while and/or do-while                  x
+for loops                              0
+multiple user defined functions        x
+file I/O                               0??????
+multiple source code files and header files 0
+good programming practices             x
+C comments describing the code         x
+professionalism                        x
+style guide Google’s coding guidelines: https://Links to an external site.google.github.io/styleguide/cppguide.htmlLinks to an external site.  Your Style Guide doesn’t have to be nearly this extensive, but when I look at the files produced by different group members, coding styles should match.)
+Include a comment section at the top of each file with the name of the Group member that contributed to the code.  Each group member should have an equal role designing/writing/debugging code. 
 *****************************************************************************/
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <SDL_image.h>
-#include <SDL.h>
+#define   SDL_MAIN_HANDLED
+#include <SDL2/SDL.h>
 
 #define SCREEN_WIDTH 800
 #define SCREEN_HEIGHT 400
