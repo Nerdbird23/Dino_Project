@@ -1,5 +1,5 @@
 # Dino_Project
-Coding the dino game for a project in C
+A bad tutorial
 
 To run the dino game:
 Begin by following this tutorial https://www.matsson.com/prog/sdl2-mingw-w64-tutorial.php
