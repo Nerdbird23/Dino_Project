@@ -21,7 +21,7 @@ multiple source code files and header files 0
 good programming practices             x
 C comments describing the code         x
 professionalism                        x
-style guide Google’s coding guidelines: https://Links to an external site.google.github.io/styleguide/cppguide.htmlLinks to an external site.  Your Style Guide doesn’t have to be nearly this extensive, but when I look at the files produced by different group members, coding styles should match.)
+style guide GoogleÂ’s coding guidelines: https://Links to an external site.google.github.io/styleguide/cppguide.htmlLinks to an external site.  Your Style Guide doesnÂ’t have to be nearly this extensive, but when I look at the files produced by different group members, coding styles should match.)
 Include a comment section at the top of each file with the name of the Group member that contributed to the code.  Each group member should have an equal role designing/writing/debugging code. 
 *****************************************************************************/
 #include <stdio.h>
@@ -39,12 +39,12 @@ Include a comment section at the top of each file with the name of the Group mem
 #define GRAVITY 0.5
 #define JUMP_STRENGTH -10
 
-//Game starting Screen
+/* Game starting Screen */
 int User_Interface(){
   int user_input;
   int z;
   printf("Would you like to play the dinosaur game? (1=\e[1;32myes1\e[0m, \e[1;310=no1\e[0m)\n");
-  z = scanf("%d", &input);
+  z = scanf("%d", &user_input);
   while (user_input != 1 && user_input != 0 ){
     printf("Invalid input, please enter either 1 or 0.\n");
     if (z == 0){
@@ -56,7 +56,7 @@ int User_Interface(){
 }
 
 
-//Instructions for the game
+/* Instructions for the game */
 void instructions(){
   printf("Instructions;\n");
   printf("Press the 'up' key or W to jump.\n");
@@ -67,8 +67,8 @@ void instructions(){
   getchar();
 }
 
-// Structure for the Dino character
-typedef struct { //Typedef redefines the name of  an already existing data type, struct groups several variables in one place
+/* Structure for the Dino character */
+typedef struct { /*Typedef redefines the name of  an already existing data type, struct groups several variables in one place */
     SDL_Texture* texture;
     SDL_Rect rect;
     SDL_Surface * image;
@@ -76,7 +76,7 @@ typedef struct { //Typedef redefines the name of  an already existing data type,
     int isJumping;
 } Dino;
 
-// Structure for the obstacle
+/* Structure for the obstacle */
 typedef struct {
     SDL_Texture* texture;
     SDL_Rect rect;
@@ -89,7 +89,7 @@ SDL_Renderer* renderer;
 Dino dino;
 Obstacle obstacle;
 
-// Initialize SDL and create a window and renderer
+/* Initialize SDL and create a window and renderer */
 int initialize(){
     if (SDL_Init(SDL_INIT_VIDEO) != 0){
         fprintf(stderr, "SDL_Init failed: %s\n", SDL_GetError());
@@ -114,11 +114,11 @@ int initialize(){
     return 0;
 }
 
-// Load a PNG image as a texture
+/* Load a PNG image as a texture */
 SDL_Texture* loadTexture(const char* imagePath){
     SDL_Surface* image = IMG_Load(imagePath);
     if (image == NULL){
-        fprintf(stderr, "IMG_Load failed: %s\n", IMG_GetError());
+        fprintf(stderr, "IMG_Load failed: %s\n", SDL_GetError());
         return NULL;
     }
 
@@ -128,9 +128,9 @@ SDL_Texture* loadTexture(const char* imagePath){
     return texture;
 }
 
-// Load game textures (this is also for error handling)
+/* Load game textures (this is also for error handling) */
 int loadGameTextures(){
-    int SDL_Surface * image; 
+    SDL_Surface* image;
     dino.texture = loadTexture("Normal_Bean.png");
     if (dino.texture == NULL){
         return 1;
@@ -144,7 +144,7 @@ int loadGameTextures(){
     return 0;
 }
 
-// Initialize the Dino character
+/* Initialize the Dino character */
 void initializeDino(){
     dino.rect.x = 100;
     dino.rect.y = SCREEN_HEIGHT - DINO_HEIGHT;
@@ -154,7 +154,7 @@ void initializeDino(){
     dino.isJumping = 0;
 }
 
-// Initialize the obstacle
+/* Initialize the obstacle */
 void initializeObstacle(){
     obstacle.rect.x = SCREEN_WIDTH;
     obstacle.rect.y = SCREEN_HEIGHT - OBSTACLE_HEIGHT;
@@ -163,23 +163,23 @@ void initializeObstacle(){
 }
 
 
-//destroys the obstacles and dino
+/* destroys the obstacles and dino */
 void destroy()
 {
-  if (dino != null)
+  if (dino)
   {
-      if (dino.texture != null)
+      if (dino.texture)
           SDL_DestroyTexture(dino.texture);
-      if (dino.image != null)
+      if (dino.image)
           SDL_FreeSurface(dino.image);
   }
-      if (obstacle != null);
-	 SDL_DestroyTexture(dino.texture);
-      if (obstacle != null)
-   	bSDL_FreeSurface(dino.image);
+      if (obstacle)
+          SDL_DestroyTexture(dino.texture);
+      if (obstacle)
+          SDL_FreeSurface(dino.image);
 }
 
-// Handle user input and character jump
+/* Handle user input and character jump */
 void handleInput(){
     SDL_Event event;
     while (SDL_PollEvent(&event)){
@@ -196,7 +196,7 @@ void handleInput(){
     }
 }
 
-// Update Dino character's position
+/* Update Dino character's position */
 void updateDino() {
     if (dino.isJumping) {
         dino.rect.y += dino.yVelocity;
@@ -209,7 +209,7 @@ void updateDino() {
     }
 }
 
-// Update obstacle's position
+/* Update obstacle's position */
 void updateObstacle(){
     obstacle.rect.x -= 5;
 
@@ -218,7 +218,7 @@ void updateObstacle(){
     }
 }
 
-// Render Dino character and obstacle
+/* Render Dino character and obstacle */
 void render(){
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderClear(renderer);
@@ -229,28 +229,28 @@ void render(){
     SDL_RenderPresent(renderer);
 }
 
-//Main function
+/* Main function */
 int main(int argc, char* argv[]){
-  User_Interface()
-  int user_output
+  User_Interface();
+  int user_output;
   
-    if (user_output == 1){ //If the user agrees to play the game
+    if (user_output == 1){ /* If the user agrees to play the game */
       if (initialize() != 0){ 
         return 1;
       }
 
-      if (loadGameTextures() != 0){ //Loads the png files
+      if (loadGameTextures() != 0){ /* Loads the png files */
         SDL_DestroyRenderer(renderer);
         SDL_DestroyWindow(window);
         SDL_Quit();
         return 1;
       }
 
-      initializeDino(); //Initializes the Dino
-      initializeObstacle(); //Initializes the obsticales
+      initializeDino(); /* Initializes the Dino */
+      initializeObstacle(); /* Initializes the obsticales */
 
       while (1){
-        handleInput(); //While everything is running (or true)
+        handleInput(); /* While everything is running (or true) */
         updateDino();
         updateObstacle();
         render();
@@ -258,7 +258,7 @@ int main(int argc, char* argv[]){
   
     } 
     else if (user_output == '0'){
-      printf("Exited Dino.c\n");   
+        printf("Exited Dino.c\n");
     }   
   return 0;
 }
